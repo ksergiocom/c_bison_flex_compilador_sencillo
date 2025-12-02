@@ -64,10 +64,7 @@ int yylex ();
  */
 
 // Axioma: Lista de sentencias recursiva
-list_sntcs:
-      sntnc SEMICOLON list_sntcs 
-    | sntnc SEMICOLON 
-    ;
+list_sntcs: sntnc SEMICOLON list_sntcs | sntnc SEMICOLON ;
 
 // Sentencias (if, while, asignación, print)
 sntnc:
@@ -100,10 +97,10 @@ iter_stmt:
 // Asignaciones a variables incluyendo las asignaciones "compuestas"
 assig_stmt: 
       ID {printf("\tvalori %s\n", $1); free($1);} ASSIGN expr {printf("\tasigna\n");}
-    | ID {printf("\tvalori %s\n\tvalord %s\n", $1, $1); free($1);} PLUS_ASSIGN expr     {printf("\tsum\n");} 
-    | ID {printf("\tvalori %s\n\tvalord %s\n", $1, $1); free($1);} MINUS_ASSIGN expr    {printf("\tsub\n");} 
-    | ID {printf("\tvalori %s\n\tvalord %s\n", $1, $1); free($1);} MULT_ASSIGN expr     {printf("\tmul\n");} 
-    | ID {printf("\tvalori %s\n\tvalord %s\n", $1, $1); free($1);} DIV_ASSIGN expr      {printf("\tdiv\n");} 
+    | ID {printf("\tvalori %s\n\tvalord %s\n", $1, $1); free($1);} PLUS_ASSIGN expr     {printf("\tsum\n\tasigna\n");} 
+    | ID {printf("\tvalori %s\n\tvalord %s\n", $1, $1); free($1);} MINUS_ASSIGN expr    {printf("\tsub\n\tasigna\n");} 
+    | ID {printf("\tvalori %s\n\tvalord %s\n", $1, $1); free($1);} MULT_ASSIGN expr     {printf("\tmul\n\tasigna\n");} 
+    | ID {printf("\tvalori %s\n\tvalord %s\n", $1, $1); free($1);} DIV_ASSIGN expr      {printf("\tdiv\n\tasigna\n");} 
     ;
 
 /* Expresiones
@@ -111,19 +108,16 @@ assig_stmt:
  * Tanto en un valor literal como en el valor que pueda tener una variable.
  */
 expr: 
-      expr PLUS expr          {printf("\tsum\n\tasigna\n");}
-    | expr MINUS expr         {printf("\tsub\n\tasigna\n");}
-    | expr DIV expr           {printf("\tdiv\n\tasigna\n");}
-    | expr MULT expr          {printf("\tmul\n\tasigna\n");}
+      expr PLUS expr          {printf("\tsum\n");}
+    | expr MINUS expr         {printf("\tsub\n");}
+    | expr DIV expr           {printf("\tdiv\n");}
+    | expr MULT expr          {printf("\tmul\n");}
     | LPAREN expr RPAREN 
     | val 
     ;
 
 // Valor; los valores son ó Enteros "literales" (tal cual) o identificadores (variables).
-val: 
-      NUM   {printf("\tmete %i\n", $1);}            
-    | ID    {printf("\tvalord %s\n", $1); free($1);}            
-    ;
+val: NUM   {printf("\tmete %i\n", $1);}  | ID    {printf("\tvalord %s\n", $1); free($1);}  ;
 
 %%
 
