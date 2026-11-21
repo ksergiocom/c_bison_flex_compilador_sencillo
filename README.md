@@ -1,7 +1,6 @@
 ## Disclaimer
 
 1. [https://youtu.be/pz3UgkyhgXk?si=0DyISvyZncHgYgPd&t=5651](https://youtu.be/pz3UgkyhgXk?si=0DyISvyZncHgYgPd&t=5651)
-2. [https://youtu.be/pz3UgkyhgXk?si=J0mKRE_gSRfgMpi1](https://youtu.be/pz3UgkyhgXk?si=J0mKRE_gSRfgMpi1)
 
 *¡En realidad me ha parecido un experimento muy divertida y didáctico!*
 
